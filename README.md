@@ -1,3 +1,3 @@
 # chungnam_chatbot
 
-pytorch programming start
+충남인력개발원 챗봇과정에서 교육받는 동안 사용하는 레포지토리 입니다.
