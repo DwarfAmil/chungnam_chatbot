@@ -77,7 +77,7 @@
 <summary><h2>23.09.06</h2></summary>
 
 ***
-* torch9,py ~ torch
+* torch9,py ~ torch16.py
 ***
 * 지도 학습
     * 분류 학습 모델
