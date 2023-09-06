@@ -15,7 +15,7 @@ class CustomDataset(Dataset):
         label = torch.tensor(self.label.iloc[idx, 3]).int()
         return sample, label
     
-tensor_dataset = CustomDataset("pytorch/test.csv")
+tensor_dataset = CustomDataset("pytorch/data/test.csv")
 dataset = DataLoader(tensor_dataset, batch_size = 4, shuffle = True)
 
 for i, data in enumerate(dataset, 0):

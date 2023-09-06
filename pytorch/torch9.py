@@ -2,10 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn import metrics
+import pickle
 
 names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']
 
-dataset = pd.read_csv("pytorch/iris.data", names=names)
+dataset = pd.read_csv("pytorch/data/iris.data", names=names)
 
 
 X = dataset.iloc[:, :-1].values
@@ -29,6 +30,11 @@ knn.fit(X_train, y_train)
 from sklearn.metrics import accuracy_score
 y_pred = knn.predict(X_test)
 print(f"정확도 : {accuracy_score(y_test, y_pred)}")
+
+
+# pickle로 생성한 모델 파일 만들기
+with open("pytorch/data/knn.pickle", "wb") as f:
+    pickle.dump(knn, f)
 
 
 k = 10
@@ -55,5 +61,3 @@ while True:
     y_pred = knn.predict(X_test)
     print(y_pred)
     break
-
-print('!@\#$%^&*(\\\'\"<>?:;')

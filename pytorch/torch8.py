@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-dataset = pd.read_csv("pytorch/car_evaluation.csv")
+dataset = pd.read_csv("pytorch/data/car_evaluation.csv")
 dataset.head()
 
 
