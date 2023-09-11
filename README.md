@@ -7,7 +7,7 @@
 <summary><h2>23.09.04</h2></summary>
 
 ***
-* torch1.py ~ torch6.py
+* torch1 ~ torch6
 ***
 * python class
     * 생성자 (constructor)
@@ -38,7 +38,7 @@
 <summary><h2>23.09.05</h2></summary>
 
 ***
-* torch7.py ~ torch9.py
+* torch7 ~ torch9
 ***
 * pytorch code
     * 데이터셋 분포
@@ -77,7 +77,7 @@
 <summary><h2>23.09.06</h2></summary>
 
 ***
-* torch9.py ~ torch16.py
+* torch9 ~ torch16
 ***
 <blockquote style="color: inherit">
 <details>
@@ -359,7 +359,7 @@
 <summary><h2>23.09.07</h2></summary>
 
 ***
-* torch17.py ~ torch19.py
+* torch17 ~ torch19
 ***
 * **`딥러닝`**
     * 퍼셉트론
@@ -379,7 +379,43 @@
     | 함수 | 활성화 함수 (activation function) | 신호를 입력받아 이를 적절히 처리하여 출력해 주는 함수 |
     | 함수 | 손실 함수 (loss function) | 가중치 학습을 위해 출력 함수의 결과와 실제 값 간의 오차를 측정하는 함수 |
 
-    </div>
-    
+    </div>   
 
 </details>
+
+***
+
+<details>
+<summary><h2>23.09.11</h2></summary>
+
+***
+* torch19 ~ torch20
+***
+* **`전이 학습`**
+    * `사전 훈련된 모델의 파라미터 학습 유무 지정`
+        * 합성곱층을 사용하되 파라미터에 대해서는 학습을 하지 않도록 고정
+
+        ```python
+        def set_parameter_requires_grad(model, feature_extracting = True):
+        if feature_extracting:
+            for param in model.parameters():
+                param.requires_grad = False
+
+        set_parameter_requires_grad(resnet18)
+        ```
+        * 역전파 중 파라미터들에 대한 변화를 계산할 필요가 없음
+        * 모델에 일부를 정하고 나머지를 학습하고자 할 때 requires_grad = False로 설정
+            * 모델의 일부는 합성곱층(convolutional layer)가 풀링(pooling)층을 의미
+* `텐서 함수 비교`
+    <div align="center">
+
+    | 구분 | 메모리 | 계산 그래프 상주 유무 |
+    |----------|----------|----------|
+    | tensor.clone() | 새롭게 할당 | 계산 그래프에 계속 상주 |
+    | tensor.datach() | 공유해서 사용 | 계산 그래프에 상주하지 않음 |
+    | tensor.clone().detach() | 새롭게 할당 | 계산 그래프에 상주하지 않음 |
+
+    </div>
+
+* `add_subplot`
+    * matplotlib 라이브러니에 있는 함수중 하나로 한 화면에 여러 개의 이미지를 담기 위해 사용
