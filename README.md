@@ -419,3 +419,52 @@
 
 * `add_subplot`
     * matplotlib 라이브러니에 있는 함수중 하나로 한 화면에 여러 개의 이미지를 담기 위해 사용
+</details>
+
+<details>
+<summary><h2>23.09.12</h2></summary>
+
+***
+* torch21 ~ torch22
+***
+
+* **`os.path.join`**
+    * 경로(패스)명 조작에 관한 처리를 모아둔 모듈로써 구현되어 있는 함수의 하나
+    * 인수에 전달된 2개의 문자열을 결합하여, 1개의 경로로 할 수 있음
+* **`transform class`**
+    * 이미지의 데이터셋을 전처리 해주는 클래스
+    ```py
+    class ImageTransform():
+        def __init__(self, resize, mean, std):
+            self.data_transfrom = {
+                "train" : transforms.Compose([
+                    transforms.RandomResizedCrop(resize, scale=(0.5, 1.0)),
+                    transforms.RandomHorizontalFlip(),
+                    transforms.ToTensor(),
+                    transforms.Normalize(mean, std)
+                ]),
+                "val" : transforms.Compose([
+                    transforms.Resize(256),
+                    transforms.CenterCrop(resize),
+                    transforms.ToTensor(),
+                    transforms.Normalize(mean, std)
+                ])
+            }
+        
+        def __call__(self, img, phase):
+            return self.data_transfrom[phase](img)
+    ```
+
+* **`tqdm`**
+    * 어떤 작업을 수행중 일 때 어디까지 실행되었고 얼마나 남았는지 등의 진행률을 확인할 때 사용
+    * 반복문에서 프로세스바를 통해 진행률과 남은 시간을 알려주는 라이브러리 함수
+* **`torch.summary`**
+    * 텐서플로에 `model.summary()`와 같이 모델의 구조도 요약을 확인하는 기능을 구현한 라이브러리
+    * 모델의 구조도에 대한 `요약`, `파라미터의 개수`, `메모리` 등 확인 가능
+
+* **`합성곱 신경망`**
+    * **`LeNet-5`**
+        * 합성곱 신경망이라는 개념을 최초로 얀 르쿤이 개발한 구조
+        * 합성곱과 다운 샘플링(혹은 풀링)을 반복적으로 거치면서 마지막에 완전연결층에서 분류를 수행
+
+</details>
