@@ -468,3 +468,45 @@
         * 합성곱과 다운 샘플링(혹은 풀링)을 반복적으로 거치면서 마지막에 완전연결층에서 분류를 수행
 
 </details>
+
+<details>
+<summary><h2>23.09.13</h2></summary>
+
+***
+* flaskbook
+***
+
+* 파이썬 웹 프레임워크
+    * 장고
+      * 특징
+        * 파이썬 웹 프레임워크 중에서도 가장 유명함
+        * 중규모 이상 웹을 구축시에 자주 사용
+        * 개발에 필요한 많은 기능이 구현되어 있어 풀스택 프레임워크로 불림
+        * Django REST Framework(DRF)를 추가 설치함으로서 웹 앱뿐만 아닌 REST API를 간단히 만들 수 있음
+    * 플라스크
+      * 특징
+        * 마이크로 웹 프레임워크이다.
+        * 데이터베이스 기능이 포함되어 있지 않는 등 최소한의 기능만 제공
+        * 최소한의 규약만 있어 앱 구성 자유롭게 결정 가능
+        * 데이터베이스 기능 등 확장 기능을 많이 지원
+    * 보틀
+      * 특징
+        * 웹 앱을 만들기 위한 프레임워크 중에는 가장 단순함
+        * bottle.py라는 하나의 파일로만 구성되어있음
+        * 파이썬 표준 라이브러리 이외에 의존 관계 없음
+        * 마이크로 웹 프레임워크 중 하나로 플라스크보다 단순하고 빠르고 가벼움
+    * FastAPI
+      * 특징
+        * 비동기 처리가 용이하도록 만들어진 파이썬 웹 프레임워크
+        * 요청을 처리하는 속도 매우 빠름
+    
+    <br>
+    <div align="center">
+
+    | 프레임워크 | 공식 사이트 | 라이선스 | 초기 개발자 | 최초 릴리스 | 템플릿 엔진 | O/R 매퍼 |
+    |----------|----------|----------|----------|----------|----------|----------|
+    | 장고 | www.djangoproject.com | BSD License | Adrian<br>Holovaty,<br>Simon Willison | 2005년 | Django<br>Template | Django<br>O/R 매퍼 |
+    | 플라스크 | palletsproject.com/p/flask | BSD License | Armin<br>Ronacher | 2010년 | Jinja2 | 없음 |
+    | 보틀 | bottlepy.org/docs/dev | MIT License | Marcel<br>HEllkamp | 2009년 | Simple<br>Template<br>Engine | 없음 |
+    | FastAPI | fastapi.tiangolo.com | MIT License | Sebastian<br>Ramirez | 2018년 | Jinja2 | 없음 |
+    </div>
