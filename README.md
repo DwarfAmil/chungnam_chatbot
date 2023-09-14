@@ -473,7 +473,7 @@
 <summary><h2>23.09.13</h2></summary>
 
 ***
-* flaskbook
+* flaskbook/apps/minimalapp
 ***
 
 * 파이썬 웹 프레임워크
@@ -510,3 +510,36 @@
     | 보틀 | bottlepy.org/docs/dev | MIT License | Marcel<br>HEllkamp | 2009년 | Simple<br>Template<br>Engine | 없음 |
     | FastAPI | fastapi.tiangolo.com | MIT License | Sebastian<br>Ramirez | 2018년 | Jinja2 | 없음 |
     </div>
+  
+    * python-dotenv
+      * 환경 변수를 .env 파일로부터 읽어 들임
+    * email-validator
+      * 이메일 주소 형식을 체크
+    * flask-debugtoolbar
+      * 플라스크 앱 개발 보조 도구
+    * flask-mail
+      * 이메일 송신
+</details>
+
+<details>
+<summary><h2>23.09.14</h2></summary>
+
+***
+* flaskbook/apps
+***
+
+* flask-sqlalchemy
+  * 플라스크에서 SQLAlchemy를 이용하는 확장
+* flask-migrate
+  * 데이터베이스를 마이그레이트하는 확장
+    * migrate - 옮기다 / 이동하다
+* flask-wtf
+  * 플라스크에서 유효성 검증이나 CSRF에 대처하기 위한 폼을 작성하는 확장
+
+  <br>
+  
+  * 유효성 검증
+    * 구체적인 의도를 가진 사용(목적)을 위하여 특정 요구사항이 충족되었다는 객관적인 증거를 제공하고 실험에 의해 확인하는 과정
+  * CSRF (Cross Site Request Forgery)
+    * 웹 어플리케이션 취약점 중 하나로 인터넷 사용자(희생자)가 자신의 의지와는 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 만드는 공격
+</details>

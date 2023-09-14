@@ -1,6 +1,16 @@
+# Cache
 __pycache__
+
+# AI
 train/
 test/
 Cat/
 Dog/
+
+# 인절미
 .idea
+identifier.sqlite
+
+# Flask
+flaskbook/migrations
+local.sqlite
