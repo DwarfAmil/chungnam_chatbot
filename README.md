@@ -476,26 +476,26 @@
 * flaskbook/apps/minimalapp
 ***
 
-* 파이썬 웹 프레임워크
-    * 장고
+* **`파이썬 웹 프레임워크`**
+    * **`장고 (django)`**
       * 특징
         * 파이썬 웹 프레임워크 중에서도 가장 유명함
         * 중규모 이상 웹을 구축시에 자주 사용
         * 개발에 필요한 많은 기능이 구현되어 있어 풀스택 프레임워크로 불림
         * Django REST Framework(DRF)를 추가 설치함으로서 웹 앱뿐만 아닌 REST API를 간단히 만들 수 있음
-    * 플라스크
+    * **`플라스크 (flask)`**
       * 특징
         * 마이크로 웹 프레임워크이다.
         * 데이터베이스 기능이 포함되어 있지 않는 등 최소한의 기능만 제공
         * 최소한의 규약만 있어 앱 구성 자유롭게 결정 가능
         * 데이터베이스 기능 등 확장 기능을 많이 지원
-    * 보틀
+    * **`보틀 (bottle)`**
       * 특징
         * 웹 앱을 만들기 위한 프레임워크 중에는 가장 단순함
         * bottle.py라는 하나의 파일로만 구성되어있음
         * 파이썬 표준 라이브러리 이외에 의존 관계 없음
         * 마이크로 웹 프레임워크 중 하나로 플라스크보다 단순하고 빠르고 가벼움
-    * FastAPI
+    * **`FastAPI`**
       * 특징
         * 비동기 처리가 용이하도록 만들어진 파이썬 웹 프레임워크
         * 요청을 처리하는 속도 매우 빠름
@@ -510,22 +510,49 @@
     | 보틀 | bottlepy.org/docs/dev | MIT License | Marcel<br>HEllkamp | 2009년 | Simple<br>Template<br>Engine | 없음 |
     | FastAPI | fastapi.tiangolo.com | MIT License | Sebastian<br>Ramirez | 2018년 | Jinja2 | 없음 |
     </div>
+
+* `데이터베이스 초기화 및 마이그레이션`
+  * **`flask db init`**
+    * 데이터베이스를 초기화하는 명령
+    ```
+    (venv) $ flask db init
+    ```
+    * 명령을 실행한 폴더 바로 아래 migraions 디렉터리가 생성됨
+    * **`tip`**
+      * migrations 디렉터리의 위치를 바꾸고 싶다면 -d 옵션을 통해 디렉터리를 지정
+      ```
+      (venv) $ flask db init -d apps/migrations
+      ```
+  * **`flask db migrate`**
+    * 데이터베이스의 마이그레이션 파일을 생성하는 명령
+    ```
+    (venv) $ flask db migrate
+    ```
+    * 모델 정의를 바탕으로 migrations/versions 아래에 파이썬 파일로 데이터 베이스에 적용하기 전 정보가 생성됨
+  * **`flask db upgrade`**
+    * 마이그레이션 정보를 실제로 데이터베이스에 반영하기 위한 명령
+    ```
+    (venv) $ flask db upgrade
+    ```
+    * users 테이블이 생성됨
+    
+<br>
   
-    * python-dotenv
-      * 환경 변수를 .env 파일로부터 읽어 들임
-    * email-validator
-      * 이메일 주소 형식을 체크
-    * flask-debugtoolbar
-      * 플라스크 앱 개발 보조 도구
-    * flask-mail
-      * 이메일 송신
+* python-dotenv
+  * 환경 변수를 .env 파일로부터 읽어 들임
+* email-validator
+  * 이메일 주소 형식을 체크
+* flask-debugtoolbar
+  * 플라스크 앱 개발 보조 도구
+* flask-mail
+  * 이메일 송신
 </details>
 
 <details>
 <summary><h2>23.09.14</h2></summary>
 
 ***
-* flaskbook/apps
+* flaskbook/apps/crud
 ***
 
 * flask-sqlalchemy
@@ -534,12 +561,51 @@
   * 데이터베이스를 마이그레이트하는 확장
     * migrate - 옮기다 / 이동하다
 * flask-wtf
-  * 플라스크에서 유효성 검증이나 CSRF에 대처하기 위한 폼을 작성하는 확장
+  * 플라스크에서 `유효성 검증`이나 `CSRF`에 대처하기 위한 폼을 작성하는 확장
 
   <br>
   
-  * 유효성 검증
+  * **`유효성 검증`**
     * 구체적인 의도를 가진 사용(목적)을 위하여 특정 요구사항이 충족되었다는 객관적인 증거를 제공하고 실험에 의해 확인하는 과정
-  * CSRF (Cross Site Request Forgery)
+  * **`CSRF (Cross Site Request Forgery)`**
     * 웹 어플리케이션 취약점 중 하나로 인터넷 사용자(희생자)가 자신의 의지와는 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 만드는 공격
+</details>
+
+***
+<details>
+<summary><h2>23.09.18</h2></summary>
+
+***
+* flaskbook/apps/auth | flaskbook/apps/detector | flaskbook/app/static
+***
+
+* **`flask-login`**
+   * Flask 프레임워크로 개발한 웹 어플리케이션의 로그인 기능을 쉽게 구현할 수 있도록 도와주는 라이브러리 
+   * **`UserMixin`**
+    <div align="center">
+    
+    | 프로퍼티/메서드         | 설명                                                     |
+    |------------------|--------------------------------------------------------|
+    | is_authenticated | 로그인 시는 true를 반환하고 미로그인시는 false를 반환하는 함수                |
+    | is_active        | 사용자 계정이 활성 상태일 때는 true를 반환하고 비활성 상태일 때는 false를 반환하는 함수 |
+    | is_anonymous     | 로그인 사용자는 false를 반환하고 익명 사용자는 true를 반환하는 함수             |
+    | get_id           | 로그인 사용자의 유니크 ID를 취득하는 프로퍼티                             |
+    </div>
+
+    * **`@login_required`**
+      * 데코레이터를 붙이면 해당의 엔드포인트는 로그인하지 않으면 접근 불가 
+    
+    <br>
+
+* **`SQLAlchemy`**
+  * **`릴레이션십`**
+    <div align="center">
+
+    | 옵션명      | 설명                                                                                                   |
+        |----------|------------------------------------------------------------------------------------------------------|
+    | backref  | 다른 모델에 대해서 양방향으로 릴레이션함                                                                               |
+    | lazy     | 관련한 객체를 지연하여 취득하는 옵션<br>디폰트는 select이며 다른 옵션에는 immediate, joined, subquery,<br>noload, dynamic 등이 있음 |
+    | order_by | 정렬할 컬럼을 지정함                                                                                          |
+    </div>
+
 </details>
