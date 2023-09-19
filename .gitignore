@@ -14,3 +14,5 @@ identifier.sqlite
 # Flask
 flaskbook/migrations
 local.sqlite
+flaskbook/apps/images
+flaskbook/apps/detector/model.pt

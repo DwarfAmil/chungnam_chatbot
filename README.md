@@ -610,3 +610,19 @@
     </div>
 
 </details>
+
+<details>
+<summary><h2>23.09.19</h2></summary>
+
+***
+* flaskbook/apps | flaskbook/apps/detector
+***
+
+* detector/index.html
+```html
+<div class="dt-image-username">{{ user_image.User.username }}</div>
+<div class="dt-image-username">{{ user_image.UserImage.user_image_name }}</div>
+```
+위와 같이 데이터베이스 안에 있는 정보를 불러오려면 불러올 정보 앞에 클래스 이름을 붙어야 함
+
+</details>
