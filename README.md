@@ -664,19 +664,19 @@
     * 계산을 위해 $x_t$와 $h_t-1$이 필요  
     즉, (이전 은닉측 * 은닉층 -> 은닉층 가중치 + 입력층 -. 은닉층 가중치 * (현재) 입력값)으로 계산 할 수 있으며,
     RNN에서 은닉층은 일반적으로 `하이퍼볼릭 탄젠트 활성화 함수`를 사용  
-    $$
-    \begin{aligned}
-    h_t = tanh(W_{hh} \cdot h_{t-1} + W_{hx} \cdot x_t)
-    \end{aligned}
-    $$
+        $$
+        \begin{aligned}
+        h_t = tanh(W_{hh} \cdot h_{t-1} + W_{hx} \cdot x_t)
+        \end{aligned}
+        $$
   * `출력층 계산`
     * 심층 신경망과 계산 방법이 동일  
     즉, (은닉층 -> 출력층 가중치 * 현재 은닉층)에 `소프트맥스 함수`를 적용  
-    $$
-    \begin{aligned}
-    ŷₜ = softmax(W_{oh}h_t)
-    \end{aligned}
-    $$
+        $$
+        \begin{aligned}
+        ŷₜ = softmax(W_{oh}h_t)
+        \end{aligned}
+        $$
   * `오차 (E)`
     * 심층 신경망에서 전방향 학습과 달리 각 단계($t$)마다 오차를 측정  
     즉, 각 단계마다 실제 값($y_t$)과 예측 값($ŷₜ$)으로 오차(평균 제곱 오차 적용)를 이용하여 측정
