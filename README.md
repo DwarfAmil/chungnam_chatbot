@@ -79,11 +79,12 @@
 ***
 * torch9 ~ torch16
 ***
-<blockquote style="color: inherit">
+
 <details>
 <summary><h3>지도 학습</h3></summary>
 
-<blockquote style="color: inherit">
+---
+
 <details>
 <summary><h3>서포트 벡터 머신 (Support Vector Machine, SVM)</h3></summary>
 
@@ -134,7 +135,6 @@
             \end{aligned}
             \right\}
             $$
-
 
         * `가우시안 RBF 커널`
             * 입력 벡터를 차원이 무한한 고차원으로 매핑하는 것으로, 모든 차수에 모든 다항식을 고려
@@ -196,7 +196,8 @@
     * 변수의 설정
         * 두 변수 간 관계에서 독립 변수와 종속 변수의 설정은 `논리적인 타당성`이 있어야 함
 
-<blockquote style="color: inherit">
+---
+
 <details>
 <summary><h3>로지스틱 회귀</h3></summary>
 
@@ -242,14 +243,10 @@
     * `다중 선형 회귀`
         * x 값이 여러 개라면 다중 선형 회귀라고 한다.
 </details>
-</blockquote>
 </details>
-</blockquote>
-                    
 </details>
-</blockquote>
 
-<blockquote style="color: inherit">
+
 <details>
 <summary><h3>비지도 학습</h3></summary>
 
@@ -272,7 +269,8 @@
 
 </div>
 
-<blockquote style="color: inherit">
+---
+
 <details>
 <summary><h3>K-평균 군집화</h3></summary>
 
@@ -344,10 +342,8 @@
 * 차원 축소 방법
     * `데이터들의 분포 특성을 잘 설명하는 벡터를 두 개 선택`
     * `벡터 두 개를 위한 적정한 가중치를 찾을 때까지 학습을 진행`
+</details> 
 </details>
-                    
-</details>
-</blockquote>
 
 <br>
 
@@ -631,11 +627,61 @@
 <summary><h2>23.09.20</h2></summary>
 
 ***
-* torch23
+* torch23 ~ torch26
 ***
 
+* **`시계열 분석`**
+  * 독립 변수를 사용하여 종속 변수를 예측하는 일반적인 머신 러닝에서 시간을 독립 변수로 사용함
 * **`ARIMA 모델 (AutoRegressive Integrated Moving Average)`**
   * 자기 회귀와 이동 평균을 둘 다 고려하는 모형
   * ARMA와 달리 과거 데이터의 선형 관계뿐만 아니라 추세까지 고려한 모델
+  * `절차`
+    * ARIMA() 함수 호출하여 사용, ARIMA(p, d, q) 함수에서 쓰는 파라미터는 다음과 같음
+      * p: 자기 회귀 차수
+      * d: 차분 차수
+      * q: 이동 평균 차수
+    * fit() 메서드 호출 모델에 데이터 적용 및 훈련
+    * predict() 메서트 호출 미래 추세 및 동향 예측
+<details>
+<summary><h3>순환 신경망 (RNN | Recurrent Neural Network)</h3></summary>
 
+* 시간적으로 연속성이 있는 데이터를 처리하려고 고안된 인공 신경망
+  * RNN의 `Recurrent(반복되는)`는 이전 은닉층이 현재 은닉층의 입력이 되면서 `반복되는 순환 구조를 갖는다`는 의미
+  * 기존 네트워크와의 차이점은 `기억(memory)`을 갖는다는 것이다.
+
+
+* `RNN의 셀 유형`
+  * `nn.RNNCell`
+    *  SimpleRNN 계층에 대응되는 RNN 셀
+  * `nn.GRUCell`
+    * GRU 계층에 대응되는 GRU 셀
+  * `nn.LSTMCell`
+    * LSTM 계층에 대응되는 LSTM 셀
+
+
+* `RNN 계산`
+  * `은닉층 계산`
+    * 계산을 위해 $x_t$와 $h_t-1$이 필요  
+    즉, (이전 은닉측 * 은닉층 -> 은닉층 가중치 + 입력층 -. 은닉층 가중치 * (현재) 입력값)으로 계산 할 수 있으며,
+    RNN에서 은닉층은 일반적으로 `하이퍼볼릭 탄젠트 활성화 함수`를 사용
+    $$
+    h_t = tanh(W_{hh} \cdot h_{t-1} + W_{hx} \cdot x_t)
+    $$
+  * `출력층 계산`
+    * 심층 신경망과 계산 방법이 동일  
+    즉, (은닉층 -> 출력층 가중치 * 현재 은닉층)에 `소프트맥스 함수`를 적용
+    &&
+    ^y_t = softmax(W_{oh}h_t)
+    $$
+  * `오차 (E)`
+    * 심층 신경망에서 전방향 학습과 달리 각 단계($t$)마다 오차를 측정  
+    즉, 각 단계마다 실제 값($y_t$)과 예측 값($^y_t$)으로 오차(평균 제곱 오차 적용)를 이용하여 측정
+  * `역전파`
+    * `BPTT(BackPropagation Through Time)`를 이용하여 모든 단계마다 처음부터 끝까지 역전파함
+      * 오차는 각 단계(&t&)마다 오차를 측정하고 이전 단계로 전달, 이것을 `BPTT`라고 함 
+    * 즉, 구한 오차를 이용하여 &W_xh, W_hh, W_hy& 및 바이어스(bias)를 업데이트함  
+    이때 BPTT는 오차가 멀리 전파될 때(왼쪽으로 전파) 계산량이 많아지고 `전파되는 양이 점차 적어지는 문제점(기울기 소멸 문제)`이 발생함  
+    * 기울기 소멸 문제를 보안하기 위해 오차를 몇 단계까지만 전파시키는 `생략된-BPTT(truncated BPTT)`를 사용할 수도 있고, 근본적으로는 LSTM 및 GRU를 많이 사용
+        계산량을 줄이기 위해 현재 단계에서 일정 시점까지만(보통 5단계 이전까지만) 오류를 역전파함, 이것을 `생략된-BPTT`라고 함
+</details>
 </details>

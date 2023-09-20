@@ -6,6 +6,8 @@ train/
 test/
 Cat/
 Dog/
+.data
+pytorch/MNIST_DATASET
 
 # 인절미
 .idea
