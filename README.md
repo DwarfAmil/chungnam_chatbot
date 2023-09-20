@@ -626,3 +626,16 @@
 위와 같이 데이터베이스 안에 있는 정보를 불러오려면 불러올 정보 앞에 클래스 이름을 붙어야 함
 
 </details>
+
+<details>
+<summary><h2>23.09.20</h2></summary>
+
+***
+* torch23
+***
+
+* **`ARIMA 모델 (AutoRegressive Integrated Moving Average)`**
+  * 자기 회귀와 이동 평균을 둘 다 고려하는 모형
+  * ARMA와 달리 과거 데이터의 선형 관계뿐만 아니라 추세까지 고려한 모델
+
+</details>
