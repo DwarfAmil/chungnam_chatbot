@@ -666,11 +666,7 @@
     RNN에서 은닉층은 일반적으로 `하이퍼볼릭 탄젠트 활성화 함수`를 사용  
 
 
-$$
-\begin{aligned}
-h_t = tanh(W_{hh} \cdot h_{t-1} + W_{hx} \cdot x_t)
-\end{aligned}
-$$
+$$h_t = tanh(W_{hh} \cdot h_{t-1} + W_{hx} \cdot x_t)$$
 
 
   * `출력층 계산`
@@ -678,11 +674,7 @@ $$
     즉, (은닉층 -> 출력층 가중치 * 현재 은닉층)에 `소프트맥스 함수`를 적용  
 
 
-$$
-\begin{aligned}
-ŷₜ = softmax(W_{oh}h_t)
-\end{aligned}
-$$
+$$ŷₜ = softmax(W_{oh}h_t)$$
 
 
   * `오차 (E)`
