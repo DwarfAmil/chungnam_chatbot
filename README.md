@@ -741,7 +741,7 @@ $$ŷₜ = softmax(W_{oh}h_t)$$
 <summary><h2>23.09.25</h2></summary>
 
 ***
-* torch31 ~ torch31
+* torch31 ~ torch34
 ***
 
 * **`성능 최적화`**
