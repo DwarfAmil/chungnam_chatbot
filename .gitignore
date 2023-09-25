@@ -8,6 +8,7 @@ Cat/
 Dog/
 .data
 pytorch/MNIST_DATASET
+pytorch/data/archive/
 
 # 인절미
 .idea
