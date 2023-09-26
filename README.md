@@ -785,3 +785,13 @@ $$ŷₜ = softmax(W_{oh}h_t)$$
       * 데이터 유형에 따라 분류와 예측에 대한 결과가 달라짐
 
 </details>
+
+
+<details>
+<summary><h2>23.09.26</h2></summary>
+
+***
+* torch34 ~ torch37
+***
+
+</details>

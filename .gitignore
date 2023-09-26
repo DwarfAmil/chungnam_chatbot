@@ -9,6 +9,7 @@ Dog/
 .data
 pytorch/MNIST_DATASET
 pytorch/data/archive/
+pytorch/data/peter.txt
 
 # 인절미
 .idea
