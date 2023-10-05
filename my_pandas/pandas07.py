@@ -1,0 +1,18 @@
+import pandas as pd
+from pandas04 import pdprint
+
+
+def main():
+    df1 = pd.read_csv("../pytorch/data/iris.csv")
+    pdprint(df1)
+
+    df_data = df1[["SepalLengthCm", "SepalWidthCm", "PetalLengthCm", "PetalWidthCm"]]
+    df_label = df1["Species"]
+    pdprint(df_data)
+    pdprint(df_label)
+    df_data.to_csv("../my_pandas/iris_data.csv")
+    df_label.to_csv("../my_pandas/iris_label.csv")
+
+
+if __name__ == "__main__":
+    main()
